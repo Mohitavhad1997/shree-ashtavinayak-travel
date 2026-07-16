@@ -9,8 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <style>
-.card-media.has-photo{padding:0;overflow:hidden;}
-.card-media.has-photo img{width:100%;height:100%;object-fit:cover;}
+.card-media.has-photo{padding:0;overflow:hidden;background:linear-gradient(135deg,var(--sand),var(--cream));}
+.card-media.has-photo img{width:100%;height:100%;object-fit:contain;}
 .pkg-card .card-media.has-photo{cursor:pointer;position:relative;}
 .pkg-card .card-media.has-photo::after{
   content:"View details";
@@ -34,7 +34,7 @@
   max-width:560px;width:100%;max-height:90vh;overflow-y:auto;
   position:relative;
 }
-.pkg-modal-img{width:100%;max-height:340px;object-fit:cover;display:block;border-radius:var(--radius-l) var(--radius-l) 0 0;}
+.pkg-modal-img{width:100%;max-height:340px;object-fit:contain;background:linear-gradient(135deg,var(--sand),var(--cream));display:block;border-radius:var(--radius-l) var(--radius-l) 0 0;}
 .pkg-modal-body{padding:26px 30px 30px;}
 .pkg-modal-close{
   position:absolute;top:14px;right:14px;
