@@ -11,6 +11,44 @@
 <style>
 .card-media.has-photo{padding:0;overflow:hidden;}
 .card-media.has-photo img{width:100%;height:100%;object-fit:cover;}
+.pkg-card .card-media.has-photo{cursor:pointer;position:relative;}
+.pkg-card .card-media.has-photo::after{
+  content:"View details";
+  position:absolute;inset:0;
+  background:rgba(36,28,20,0.45);
+  color:#FBF6EC;font-family:"Work Sans",sans-serif;font-weight:600;font-size:.85rem;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .2s ease;
+}
+.pkg-card .card-media.has-photo:hover::after{opacity:1;}
+
+.pkg-modal-overlay{
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:rgba(36,28,20,0.72);
+  align-items:center;justify-content:center;
+  padding:24px;
+}
+.pkg-modal-overlay.open{display:flex;}
+.pkg-modal{
+  background:var(--cream);border-radius:var(--radius-l);
+  max-width:560px;width:100%;max-height:90vh;overflow-y:auto;
+  position:relative;
+}
+.pkg-modal-img{width:100%;max-height:340px;object-fit:cover;display:block;border-radius:var(--radius-l) var(--radius-l) 0 0;}
+.pkg-modal-body{padding:26px 30px 30px;}
+.pkg-modal-close{
+  position:absolute;top:14px;right:14px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(36,28,20,0.6);color:#fff;border:none;
+  font-size:1.1rem;cursor:pointer;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+}
+.pkg-modal-close:hover{background:var(--maroon);}
+.pkg-modal-tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600;color:var(--maroon);margin-bottom:.5em;}
+.pkg-modal-body h3{font-family:var(--font-display);font-size:1.5rem;margin-bottom:.4em;}
+.pkg-modal-body p.pkg-modal-desc{color:var(--ink-soft);margin-bottom:1.3em;}
+.pkg-modal-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--line);}
+.pkg-modal-price{font-family:var(--font-display);font-size:1.3rem;color:var(--maroon);font-weight:600;}
 </style>
 </head>
 <body>
@@ -53,8 +91,8 @@
       </div>
       <div class="grid-3">
 
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782226861466.jpg" alt="Ashtavinayak Darshan"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782226861466.jpg" data-title="Ashtavinayak Darshan" data-tag="3 Days · Kalyan to Kalyan" data-desc="All eight Ganpati temples plus Jejuri and Balaji — Mahad, Pali, Ranjangaon, Theur, Siddhatek, Morgaon, Ozar and Lenyadri, with AC tempo travel and all meals." data-price="₹6,500 / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Ashtavinayak Darshan. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Ashtavinayak Darshan details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782226861466.jpg" alt="Ashtavinayak Darshan"></div>
           <div class="card-body">
             <p class="card-tag">3 Days · Kalyan to Kalyan</p>
             <h3>Ashtavinayak Darshan</h3>
@@ -63,8 +101,8 @@
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782202177404.jpg" alt="Tristhali Yatra"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782202177404.jpg" data-title="Tristhali Yatra" data-tag="10 Days · Rail journey" data-desc="Kashi (Varanasi), Gaya, Bodhgaya, Ayodhya, Prayagraj, Chitrakoot and Naimisharanya on a fixed AC coach circuit with hotel stays." data-price="₹27,500 + rail / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Tristhali Yatra. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Tristhali Yatra details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782202177404.jpg" alt="Tristhali Yatra"></div>
           <div class="card-body">
             <p class="card-tag">10 Days · Rail journey</p>
             <h3>Tristhali Yatra</h3>
@@ -73,8 +111,8 @@
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782202282668.jpg" alt="Triveni Yatra"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782202282668.jpg" data-title="Triveni Yatra" data-tag="10 Days · Rail journey" data-desc="Kolkata, Gangasagar Sangam, Jagannath Puri and Bhubaneswar, including Konark and Lingaraj temple visits." data-price="₹17,500 + rail / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Triveni Yatra. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Triveni Yatra details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782202282668.jpg" alt="Triveni Yatra"></div>
           <div class="card-body">
             <p class="card-tag">10 Days · Rail journey</p>
             <h3>Triveni Yatra</h3>
@@ -83,8 +121,8 @@
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775011752170.jpg" alt="Chardham Darshan"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775011752170.jpg" data-title="Chardham Darshan" data-tag="14 Days · Rail journey" data-desc="Badrinath, Kedarnath, Gangotri and Yamunotri with Haridwar Ganga aarti and Rishikesh — a paced, senior-friendly itinerary." data-price="₹42,500 + rail / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Chardham Darshan. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Chardham Darshan details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775011752170.jpg" alt="Chardham Darshan"></div>
           <div class="card-body">
             <p class="card-tag">14 Days · Rail journey</p>
             <h3>Chardham Darshan</h3>
@@ -93,8 +131,8 @@
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775270390546.jpg" alt="Saurashtra Darshan"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775270390546.jpg" data-title="Saurashtra Darshan" data-tag="10 Days · Rail journey" data-desc="Dwarka, Somnath, Girnar, Nageshwar, Porbandar, Statue of Unity, Akshardham and Sabarmati Ashram." data-price="₹26,500 + rail / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Saurashtra Darshan. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Saurashtra Darshan details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775270390546.jpg" alt="Saurashtra Darshan"></div>
           <div class="card-body">
             <p class="card-tag">10 Days · Rail journey</p>
             <h3>Saurashtra Darshan</h3>
@@ -103,8 +141,8 @@
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775310598843.jpg" alt="Triyogi Yatra"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775310598843.jpg" data-title="Triyogi Yatra" data-tag="9 Days · Rail journey" data-desc="Pithapur, Kuravpur (Krishna river boat darshan), Srisailam Jyotirlinga, Hyderabad sightseeing and Ramoji Film City." data-price="₹24,500 / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Triyogi Yatra. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Triyogi Yatra details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775310598843.jpg" alt="Triyogi Yatra"></div>
           <div class="card-body">
             <p class="card-tag">9 Days · Rail journey</p>
             <h3>Triyogi Yatra</h3>
@@ -113,8 +151,8 @@
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775311601856.jpg" alt="Tridali Yatra"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775311601856.jpg" data-title="Tridali Yatra" data-tag="8 Days · Rail journey" data-desc="Delhi, Agra (Taj Mahal), Mathura, Vrindavan, Gokul and Fatehpur Sikri, with home-style meals through the trip." data-price="₹19,500 + rail / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Tridali Yatra. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Tridali Yatra details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775311601856.jpg" alt="Tridali Yatra"></div>
           <div class="card-body">
             <p class="card-tag">8 Days · Rail journey</p>
             <h3>Tridali Yatra</h3>
@@ -123,8 +161,8 @@
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782226313130.png" alt="Pithapur-Kuravpur Yatra"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782226313130.png" data-title="Pithapur – Kuravpur Yatra" data-tag="7 Days · Rail journey" data-desc="Shripad Vallabh birthplace darshan at Pithapur, followed by Mantralayam and the sacred island shrine of Kuravpur." data-price="₹14,500 / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Pithapur-Kuravpur Yatra. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Pithapur – Kuravpur Yatra details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782226313130.png" alt="Pithapur-Kuravpur Yatra"></div>
           <div class="card-body">
             <p class="card-tag">7 Days · Rail journey</p>
             <h3>Pithapur – Kuravpur Yatra</h3>
@@ -145,8 +183,8 @@
         <h2>Beyond the border</h2>
       </div>
       <div class="grid-3">
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782199588397.png" alt="Bhutan Darshan"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782199588397.png" data-title="Bhutan Darshan" data-tag="8 Days · Flight included" data-desc="Phuentsholing, Paro (Tiger's Nest monastery), Thimphu and Punakha — the full Land of Happiness circuit." data-price="₹43,500 / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Bhutan Darshan. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Bhutan Darshan details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782199588397.png" alt="Bhutan Darshan"></div>
           <div class="card-body">
             <p class="card-tag">8 Days · Flight included</p>
             <h3>Bhutan Darshan</h3>
@@ -154,8 +192,8 @@
             <div class="card-foot"><div class="card-price">₹43,500<span> / person</span></div><a href="https://wa.me/919323780880?text=Hi, I am interested in your package: Bhutan Darshan. Please provide more details." class="card-link" target="_blank" rel="noopener">Enquire →</a></div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-media has-photo"><img src="images/vietnam-tour.jpg" alt="Vietnam Tour"></div>
+        <div class="card pkg-card" data-img="images/vietnam-tour.jpg" data-title="Vietnam Tour" data-tag="8 Days · 7 Nights · Flights included" data-desc="Hanoi, Halong Bay cruise, Da Nang, Hoi An, Ba Na Hills and Ho Chi Minh City, with round-trip flights from India and 2 internal flights included. Departure: 26 Oct – 02 Nov 2026." data-price="₹1,34,500 / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Vietnam Tour. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Vietnam Tour details"><img src="images/vietnam-tour.jpg" alt="Vietnam Tour"></div>
           <div class="card-body">
             <p class="card-tag">8 Days · 7 Nights · Flights included</p>
             <h3>Vietnam Tour</h3>
@@ -163,8 +201,8 @@
             <div class="card-foot"><div class="card-price">₹1,34,500<span> / person</span></div><a href="https://wa.me/919323780880?text=Hi, I am interested in your package: Vietnam Tour. Please provide more details." class="card-link" target="_blank" rel="noopener">Enquire →</a></div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782201531265.jpg" alt="Nepal Darshan"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782201531265.jpg" data-title="Nepal Darshan" data-tag="11 Days · Rail journey" data-desc="Kathmandu, Pokhara, Chitwan jungle safari, Muktinath, Janakpur and Lumbini — Buddha's birthplace." data-price="₹41,500 + rail / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Nepal Darshan. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Nepal Darshan details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1782201531265.jpg" alt="Nepal Darshan"></div>
           <div class="card-body">
             <p class="card-tag">11 Days · Rail journey</p>
             <h3>Nepal Darshan</h3>
@@ -189,8 +227,8 @@
         <h2>Beyond the temples</h2>
       </div>
       <div class="grid-3">
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775309612431.jpg" alt="Kerala Darshan"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775309612431.jpg" data-title="Kerala Darshan" data-tag="13 Days · Rail / flight" data-desc="Munnar tea gardens, Thekkady wildlife, Alleppey backwaters, Kanyakumari, Rameshwaram and Madurai." data-price="₹38,500 + travel / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Kerala Darshan. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Kerala Darshan details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775309612431.jpg" alt="Kerala Darshan"></div>
           <div class="card-body">
             <p class="card-tag">13 Days · Rail / flight</p>
             <h3>Kerala Darshan</h3>
@@ -198,8 +236,8 @@
             <div class="card-foot"><div class="card-price">₹38,500<span> + travel / person</span></div><a href="https://wa.me/919323780880?text=Hi, I am interested in your package: Kerala Darshan. Please provide more details." class="card-link" target="_blank" rel="noopener">Enquire →</a></div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775010195498.jpg" alt="Madhya Pradesh Darshan"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775010195498.jpg" data-title="Madhya Pradesh Darshan" data-tag="11 Days" data-desc="Gwalior, Orchha, Khajuraho, Bandhavgarh tiger safari, Jabalpur's marble rocks, Pachmarhi and Bhopal." data-price="₹32,500 / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Madhya Pradesh Darshan. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Madhya Pradesh Darshan details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775010195498.jpg" alt="Madhya Pradesh Darshan"></div>
           <div class="card-body">
             <p class="card-tag">11 Days</p>
             <h3>Madhya Pradesh Darshan</h3>
@@ -207,8 +245,8 @@
             <div class="card-foot"><div class="card-price">₹32,500<span> / person</span></div><a href="https://wa.me/919323780880?text=Hi, I am interested in your package: Madhya Pradesh Darshan. Please provide more details." class="card-link" target="_blank" rel="noopener">Enquire →</a></div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-media has-photo"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775310061553.jpg" alt="Purvanchal - 3 Sisters"></div>
+        <div class="card pkg-card" data-img="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775310061553.jpg" data-title="Purvanchal — 3 Sisters" data-tag="12 Days · 11 Nights" data-desc="Assam, Meghalaya and Arunachal Pradesh: Shillong, Cherrapunji, Kaziranga safari, Tawang and Guwahati." data-price="₹54,500 / person" data-wa="https://wa.me/919323780880?text=Hi, I am interested in your package: Purvanchal - 3 Sisters. Please provide more details.">
+          <div class="card-media has-photo" role="button" tabindex="0" aria-label="View Purvanchal — 3 Sisters details"><img src="https://d3k88l35vy59af.cloudfront.net/A001/10611/1775310061553.jpg" alt="Purvanchal - 3 Sisters"></div>
           <div class="card-body">
             <p class="card-tag">12 Days · 11 Nights</p>
             <h3>Purvanchal — 3 Sisters</h3>
@@ -278,6 +316,22 @@
     </div>
   </div>
 </footer>
+
+<div class="pkg-modal-overlay" id="pkg-modal-overlay">
+  <div class="pkg-modal" role="dialog" aria-modal="true" aria-labelledby="pkg-modal-title">
+    <button class="pkg-modal-close" id="pkg-modal-close" aria-label="Close">✕</button>
+    <img class="pkg-modal-img" id="pkg-modal-img" src="" alt="">
+    <div class="pkg-modal-body">
+      <p class="pkg-modal-tag" id="pkg-modal-tag"></p>
+      <h3 id="pkg-modal-title"></h3>
+      <p class="pkg-modal-desc" id="pkg-modal-desc"></p>
+      <div class="pkg-modal-footer">
+        <div class="pkg-modal-price" id="pkg-modal-price"></div>
+        <a href="#" id="pkg-modal-wa" class="btn btn-primary" target="_blank" rel="noopener">Enquire on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="js/script.js"></script>
 </body>
