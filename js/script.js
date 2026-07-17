@@ -12,16 +12,47 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  var form = document.getElementById("enquiry-form");
+var form = document.getElementById("enquiry-form");
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var note = document.getElementById("form-note");
-      if (note) {
-        note.textContent = "Thank you! Your enquiry has been noted. Our team will call you within 24 hours.";
-        note.style.display = "block";
-      }
-      form.reset();
+      var submitBtn = form.querySelector('button[type="submit"]');
+
+      var data = {
+        name: form.name.value,
+        phone: form.phone.value,
+        email: form.email.value,
+        group: form.group.value,
+        package: form.package.value,
+        message: form.message.value
+      };
+
+      if (submitBtn) submitBtn.disabled = true;
+
+      fetch("https://script.google.com/macros/s/AKfycbzgVz8I2YUtL1r-qCynRDCkkYa3iIjUBxfTCtqGCffwH-3EdbCgQ_cTje3yVQXYCJg-/exec", {
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+      .then(function () {
+        if (typeof fbq === "function") {
+          fbq('track', 'Lead');
+        }
+        if (note) {
+          note.textContent = "Thank you! Your enquiry has been noted. Our team will call you within 24 hours.";
+          note.style.display = "block";
+        }
+        form.reset();
+      })
+      .catch(function () {
+        if (note) {
+          note.textContent = "Something went wrong. Please WhatsApp us directly instead.";
+          note.style.display = "block";
+        }
+      })
+      .finally(function () {
+        if (submitBtn) submitBtn.disabled = false;
+      });
     });
   }
 
